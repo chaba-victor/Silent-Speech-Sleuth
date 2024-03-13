@@ -1,4 +1,4 @@
-# Silent-Speech-Sleuth
+# Silent-Speech-Sleuth (S3)
 
 A few weeks ago, La Liga hired a professional lip reader to decide whether Jude Bellingham called Mason Greenwood a “rapist” after the two players clashed during a football (not soccer) match.
 Now I am not going to look much into the incident, instead what I am going to try to build a deep learning model that is able to read lips becouse, not many of us can affor a pro lip reader.
