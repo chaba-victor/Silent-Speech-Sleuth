@@ -94,6 +94,7 @@ imageio.mimsave('./animation.gif', val[0][0], fps=10)
 # 0:videos, 0: 1st video out of the batch,  0: return the first frame in the video 
 plt.imshow(val[0][0][35])
 
+tf.strings.reduce_join([num_to_char(word) for word in val[1][0]])
 
 
 ```
