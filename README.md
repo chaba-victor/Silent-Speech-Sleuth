@@ -100,6 +100,36 @@ tf.strings.reduce_join([num_to_char(word) for word in val[1][0]])
 ```
 ### Designing the Deep Neural Network
 
+This code snippet is for building a convolutional recurrent neural network (CNN-LSTM) model using the Keras API from TensorFlow. Let's break down the code step by step:
+
+1. **Import Necessary Modules**:
+    - `Sequential`: Allows creating models layer-by-layer.
+    - Layers: `Conv3D`, `LSTM`, `Dense`, `Dropout`, `Bidirectional`, `MaxPool3D`, `Activation`, `Reshape`, `SpatialDropout3D`, `BatchNormalization`, `TimeDistributed`, `Flatten` are various layers used in the neural network.
+    - `Adam`: An optimization algorithm.
+    - `ModelCheckpoint`, `LearningRateScheduler`: Callbacks for training process.
+
+2. **Check Input Shape**:
+    - We check the shape of the input data. The input data is a 3D array with shape (75, 46, 140, 1).
+
+3. **Define Model Architecture**:
+    - `Sequential()` initializes a linear stack of layers.
+    - `Conv3D`: Adds a 3D convolutional layer with specified number of filters (128, 256, 75 respectively), kernel size (3), and padding ('same').
+    - `Activation('relu')`: Adds a ReLU activation function after each convolutional layer.
+    - `MaxPool3D`: Performs max pooling operation along the temporal, height, and width dimensions using specified pool size.
+    - `TimeDistributed`: This wrapper allows the application of a layer to every temporal slice of an input.
+    - `Flatten`: Reshapes the input to a single dimension.
+    - `Bidirectional`: Wrapper for making LSTM layers bidirectional, which processes the input sequence in both forward and backward directions.
+    - `LSTM`: Adds LSTM layers with 128 units each, returning sequences.
+    - `Dropout`: Adds dropout layers to prevent overfitting.
+    - `Dense`: Adds a fully connected layer with a number of neurons equal to the vocabulary size plus one (for softmax activation).
+    - `kernel_initializer`: Specifies the initialization method for layer weights.
+    - `activation`: Specifies the activation function for the output layer.
+
+4. **Model Summary**:
+    - `model.summary()`: Prints the summary of the model showing the architecture, layer types, output shapes, and number of parameters.
+
+This model is designed for sequencial data processing; for tasks like action recognition or spatio-temporal prediction, given the input shape and the use of convolutional and recurrent layers.
+
 ```python
 from tensorflow.keras.models import Sequential 
 from tensorflow.keras.layers import Conv3D, LSTM, Dense, Dropout, Bidirectional, MaxPool3D, Activation, Reshape, SpatialDropout3D, BatchNormalization, TimeDistributed, Flatten
